@@ -1,0 +1,29 @@
+@using BOL;
+@using System.Collections.Generic;
+
+@{
+    List<Department>dlist = ViewData["Department1"] as List<Department>;
+}
+
+<Html>
+    <meta>
+    <head></head>
+    <body align="center">
+        <form action="/studentdept/indexdep">
+          <div align="center"><h1>List of Student Department</h1><br/>
+          <a href="/studentdept/insertdep">Add Department</a><br/></div>
+          <table border="4" align="center">
+            <thead>
+                <tr><th>ID</th><th>DEPARTMENT NAME</th><th>ACTION</th></tr>
+                @{
+                    foreach(Department d in dlist){
+                        <tr><td>@d.DepId</td><td>@d.DepName</td><td>
+                            <a href="/studentdept/deletedep?depid=@d.DepId">Remove</a> / <a href="/studentdept/editdep?depid=@d.DepId">Edit</a>
+                        </td></tr>
+                    }
+                }
+            </thead>
+          </table>
+        </form>
+    </body>
+</Html>

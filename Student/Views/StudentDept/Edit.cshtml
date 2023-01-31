@@ -1,0 +1,31 @@
+@using BOL;
+@using System.Collections.Generic();
+
+@{
+    List<Department> dlist = ViewData["Department"] as List<Department>;
+    Student1 s = ViewData["Student1"] as Student1;
+        
+}
+
+<html>
+    <meta>
+    <head></head>
+   <body align="center">
+         <div align="center"><h1><u>UPDATE NEW ENTRY</u></h1></div><br/>
+         <form action="/StudentDept/Edit" method="post">
+           <input type="hidden" name="studid" id="studid" value= @s.StudId>         
+          
+           
+           
+           Student Name : <input type="text" name="sname" id="sname" />
+          <select name="dname" id="dname">
+            @{
+                foreach(Department d in dlist){
+                   <option value="@d.DepName">@d.DepName</option>
+                }
+            }
+          </select>
+          <button type="submit" name="btn" id="btn">Submit</button>
+        </form>
+   </body>
+</html>

@@ -1,0 +1,29 @@
+@using BOL;
+@using System.Collections.Generic;
+
+@{
+    List<Student1> slist = ViewData["Student1"] as List<Student1>;
+}
+
+<Html>
+    <meta>
+    <head></head>
+    <body align="center">
+        <form action="/studentdept/index">
+          <div align="center"><h1>List of Student Department</h1><br/>
+          <a href="/studentdept/insert">Add Student</a><br/></div>
+          <table border="4" align="center">
+            <thead>
+                <tr><th>ID</th><th>STUDENT NAME</th><th>DepartmentID</th><th>ACTION</th></tr>
+                @{
+                    foreach(Student1 s in slist){
+                        <tr><td>@s.StudId</td><td>@s.StudName</td><td>@s.DeptId</td><td>
+                            <a href="/StudentDept/Delete?studid=@s.StudId">Remove</a> / <a href="/studentdept/edit?studid=@s.StudId">Edit</a>
+                        </td></tr>
+                    }
+                }
+            </thead>
+          </table>
+        </form>
+    </body>
+</Html>

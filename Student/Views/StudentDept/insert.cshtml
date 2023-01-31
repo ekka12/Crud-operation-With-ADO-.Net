@@ -1,0 +1,27 @@
+@using BOL;
+@using System.Collections.Generic
+
+@{
+   List<Department>dlist=ViewData["Department"] as List<Department>;
+}
+<html>
+    <meta>
+    <head></head>
+    <body align="center">
+         <div align="center"><h1>ADD DATA CAREFULLY</h1></div>
+        <form action="/studentdept/insert" method="post">
+          Student Id : <input type ="number" name="sid" id="sid" required="true"/> <br/>
+          Student Name : <input type="text" name="sname" id="sname" required="true"/><br/>
+          <select name="dname" id="dname">
+            @{
+               foreach(Department d in dlist){      
+                 <option value="@d.DepName">@d.DepName</option>
+               }
+            }
+          </select>
+          <button type="submit" name="btn" id="btn">Submit</button> 
+        </form>
+
+       
+    </body>
+</html>
